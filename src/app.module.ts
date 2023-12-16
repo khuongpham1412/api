@@ -21,10 +21,11 @@ import { CONFIG } from './config/config';
 import { EdenQueueProcessor } from './queues/eden.queue';
 import { CategoryController } from './controllers/category.controller';
 import { CategoryService } from './services/category.service';
+import { GoogleStrategy } from './controllers/google.stategy';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot(PostgreDataSource),
+    TypeOrmModule.forRoot(MySQLDataSource),
     TypeOrmModule.forFeature(EntityRegister),
     BullModule.forRoot({
       redis: {
@@ -53,6 +54,7 @@ import { CategoryService } from './services/category.service';
     HighlightService,
     CategoryService,
     EdenQueueProcessor,
+    GoogleStrategy,
   ],
 })
 export class AppModule {}
